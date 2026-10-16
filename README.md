@@ -1,3 +1,4 @@
+
 # Password Strength Checker
 
 A local-first password security toolkit for a college project and portfolio. It combines a password analyzer, secure generator, passphrase generator, encrypted local vault, password-health dashboard, breach-check option, phishing-link heuristics, security audit, learning mode, encrypted backup/restore, and a Matrix-themed responsive interface.
@@ -65,3 +66,8 @@ The checker validates response headers and ensures page scripts are same-origin.
 - `password_checker.py`, `shared/rules.json`, `shared/test_vectors.json`: analyzer and shared rules.
 - `tests/`, `tests/ui/`: automated tests; `tools/`: security report and deployed-header checker.
 - `SECURITY.md`, `docs/ARCHITECTURE.md`, `docs/ARGON2_EVALUATION.md`, `docs/DEMO_SCRIPT.md`: security limitations and presentation support.
+
+# password-strength-checker
+A privacy-focused Password Strength Checker with real-time password analysis, secure password and passphrase generation, breach checking, and an encrypted local vault. Features Argon2id encryption, encrypted backups, phishing link detection, a security dashboard, offline PWA support, and automated security tests.
+
+e0a719267df8f6a9397a1199dd64b1f7c8877cce
