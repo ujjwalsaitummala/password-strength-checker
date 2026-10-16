@@ -1,0 +1,11 @@
+{
+  "name": "password-strength-checker",
+  "private": true,
+  "scripts": {
+    "start": "python serve.py",
+    "test": "python -m unittest && node tests/analyzer.test.mjs && node tests/vault_crypto.test.mjs && node tests/breach.test.mjs && node tests/passphrase.test.mjs && node tests/security.test.mjs && node tests/phish.test.mjs && node tests/argon2.test.mjs && node tests/vendor.test.mjs",
+    "test:ui": "node tests/ui/run.mjs",
+    "report": "python tools/security_report.py",
+    "check:headers": "python tools/check_headers.py"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "password-vault-ui-tests",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node journey.test.mjs",
+    "test:fallback": "node journey.test.mjs --no-argon"
+  },
+  "devDependencies": {
+    "fake-indexeddb": "^6.0.0",
+    "hash-wasm": "^4.12.0",
+    "jsdom": "^25.0.0"
+  }
+}

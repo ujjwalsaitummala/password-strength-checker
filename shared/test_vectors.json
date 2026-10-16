@@ -1,0 +1,219 @@
+[
+ {
+  "pw": "password",
+  "rating": "Very Weak",
+  "kinds": [
+   "common",
+   "dictionary"
+  ],
+  "bits": 10.0
+ },
+ {
+  "pw": "p@ssword",
+  "rating": "Very Weak",
+  "kinds": [
+   "common",
+   "dictionary"
+  ],
+  "bits": 10.0
+ },
+ {
+  "pw": "123456",
+  "rating": "Very Weak",
+  "kinds": [
+   "common",
+   "sequence"
+  ],
+  "bits": 8.0
+ },
+ {
+  "pw": "qwerty",
+  "rating": "Very Weak",
+  "kinds": [
+   "common",
+   "dictionary"
+  ],
+  "bits": 10.0
+ },
+ {
+  "pw": "abc123",
+  "rating": "Very Weak",
+  "kinds": [
+   "common",
+   "sequence"
+  ],
+  "bits": 10.0
+ },
+ {
+  "pw": "aaaaaa",
+  "rating": "Very Weak",
+  "kinds": [
+   "repeat"
+  ],
+  "bits": 6.0
+ },
+ {
+  "pw": "xx123456xx",
+  "rating": "Weak",
+  "kinds": [
+   "sequence"
+  ],
+  "bits": 28.6797
+ },
+ {
+  "pw": "Tr7mQ2xLp",
+  "rating": "Moderate",
+  "kinds": [],
+  "bits": 53.587767
+ },
+ {
+  "pw": "k9#Vr2$Lq8!zXw4@Tn6",
+  "rating": "Very Strong",
+  "kinds": [],
+  "bits": 124.827257
+ },
+ {
+  "pw": "MySunshine77",
+  "rating": "Moderate",
+  "kinds": [
+   "dictionary"
+  ],
+  "bits": 37.816785
+ },
+ {
+  "pw": "Rk!x1998zq",
+  "rating": "Moderate",
+  "kinds": [
+   "year"
+  ],
+  "bits": 46.419134
+ },
+ {
+  "pw": "Xyabababq",
+  "rating": "Very Weak",
+  "kinds": [
+   "repeat"
+  ],
+  "bits": 23.101319
+ },
+ {
+  "pw": "Dr@gon!!Xk",
+  "rating": "Moderate",
+  "kinds": [
+   "dictionary"
+  ],
+  "bits": 39.637564
+ },
+ {
+  "pw": "Zqwertyuz9",
+  "rating": "Very Weak",
+  "kinds": [
+   "sequence"
+  ],
+  "bits": 25.862589
+ },
+ {
+  "pw": "correct-Horse-9-Battery-Staple!",
+  "rating": "Very Strong",
+  "kinds": [],
+  "bits": 203.665524
+ },
+ {
+  "pw": "Summer2024!",
+  "rating": "Very Weak",
+  "kinds": [
+   "dictionary",
+   "year"
+  ],
+  "bits": 27.569856
+ },
+ {
+  "pw": "iloveyou",
+  "rating": "Very Weak",
+  "kinds": [
+   "common",
+   "dictionary"
+  ],
+  "bits": 10.0
+ },
+ {
+  "pw": "Kaaaa7!m",
+  "rating": "Weak",
+  "kinds": [
+   "repeat"
+  ],
+  "bits": 32.279422
+ },
+ {
+  "pw": "abcdefgh",
+  "rating": "Very Weak",
+  "kinds": [
+   "sequence"
+  ],
+  "bits": 8.0
+ },
+ {
+  "pw": "9876543",
+  "rating": "Very Weak",
+  "kinds": [
+   "sequence"
+  ],
+  "bits": 8.0
+ },
+ {
+  "pw": "Tr0ub4dor&3",
+  "rating": "Strong",
+  "kinds": [],
+  "bits": 72.268412
+ },
+ {
+  "pw": "letmein123",
+  "rating": "Very Weak",
+  "kinds": [
+   "dictionary",
+   "sequence"
+  ],
+  "bits": 22.0
+ },
+ {
+  "pw": "Aa1!",
+  "rating": "Very Weak",
+  "kinds": [],
+  "bits": 26.279422
+ },
+ {
+  "pw": "zxcvbnmasdfghjkl",
+  "rating": "Very Weak",
+  "kinds": [
+   "sequence"
+  ],
+  "bits": 16.0
+ },
+ {
+  "pw": "M1ssi0nIm9ossible!",
+  "rating": "Very Strong",
+  "kinds": [],
+  "bits": 118.257401
+ },
+ {
+  "pw": "P@ssw0rd2020",
+  "rating": "Very Weak",
+  "kinds": [
+   "dictionary",
+   "repeat"
+  ],
+  "bits": 20.0
+ },
+ {
+  "pw": "Qm8$Zt4#Lw",
+  "rating": "Strong",
+  "kinds": [],
+  "bits": 65.698556
+ },
+ {
+  "pw": "11223344aabb",
+  "rating": "Strong",
+  "kinds": [],
+  "bits": 62.0391
+ }
+]

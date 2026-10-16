@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Matrix Password Vault</title>
+<meta name="theme-color" content="#000000"><meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'none'; form-action 'none'"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon-192.png">
+
+<style>
+:root{--g:#8fd0ff;--a:143,208,255;--d:rgba(var(--a),.35);--r:#ff4d4d;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:inherit}
+body{margin:0;background:#000;color:#e8f3ff;font:var(--fs,15px)/1.5 ui-monospace,Menlo,Consolas,monospace}
+#m{position:fixed;inset:0;width:100%;height:100%;z-index:0;opacity:.5}
+main{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:16px;display:grid;gap:14px}
+h1{margin:6px 0 0;font-size:22px;text-shadow:0 0 10px var(--g)}h2{margin:0 0 10px;font-size:17px}
+.c{background:linear-gradient(135deg,rgba(255,255,255,.16),rgba(255,255,255,.04));-webkit-backdrop-filter:blur(var(--bl,18px)) saturate(160%);backdrop-filter:blur(var(--bl,18px)) saturate(160%);border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:16px;box-shadow:0 8px 32px rgba(0,40,100,.45),inset 0 1px 0 rgba(255,255,255,.25)}
+::placeholder{color:#9fb8d6}
+input[type=text],input[type=password],input[type=email],textarea{width:100%;background:rgba(255,255,255,.08);color:#e8f3ff;border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:10px;font:inherit;margin:4px 0;outline:none}
+input:focus,textarea:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(var(--a),.25)}input{accent-color:var(--g)}
+button{background:rgba(var(--a),.14);color:#e8f3ff;border:1px solid rgba(var(--a),.5);border-radius:12px;padding:8px 14px;font:inherit;cursor:pointer;margin:3px 3px 3px 0;transition:.2s}
+button:hover,button.on{background:rgba(var(--a),.35);box-shadow:0 0 14px rgba(var(--a),.45)}
+label{display:inline-block;margin:2px 12px 2px 0}.row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.bar{height:10px;background:rgba(255,255,255,.14);border-radius:5px;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;width:0;transition:.3s}
+small,.mut{color:#a9c8ec;font-size:13px}ul{margin:6px 0;padding-left:20px}
+.gen{background:rgba(255,255,255,.07);border-radius:12px;word-break:break-all;font-size:17px;padding:10px;border:1px dashed var(--d);margin:8px 0;min-height:44px}
+.ask{border:1px solid var(--g);border-radius:14px;padding:12px;margin-top:10px;background:rgba(var(--a),.1)}
+.e{border-top:1px solid var(--d);padding:8px 0;word-break:break-word}.e b{color:#fff}
+#lock{text-align:center}h3{margin:4px 0}.center{display:flex;justify-content:center;margin:14px 0;min-height:44px}.or{color:#a9c8ec;margin:8px 0}.fb{width:280px;display:block;margin:0 auto 10px;border-radius:999px;background:#1877f2;border-color:#1877f2;padding:11px;font-weight:600}.fb:hover{background:#3b8bf5}select{width:100%;background:rgba(255,255,255,.08);color:#e8f3ff;border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:10px;font:inherit;margin:4px 0}option{color:#000}.chip{display:inline-block;padding:3px 10px;border-radius:999px;border:1px solid var(--d);margin:0 6px 6px 0;background:rgba(255,255,255,.08);font-size:13px}.chip.bad{border-color:#ff9f3b;color:#ffcf9f}:focus-visible{outline:2px solid #fff;outline-offset:2px}#net{font-size:13px}pre{white-space:pre-wrap;word-break:break-word;background:rgba(255,255,255,.07);border-radius:12px;padding:10px;max-height:320px;overflow:auto;font:inherit;font-size:13px}header{display:flex;align-items:center;gap:10px}header h1{flex:1;margin:0}.ib{padding:6px 13px;font-size:18px;margin:0}.drawer{overflow-y:auto;position:fixed;top:0;left:0;bottom:0;width:250px;z-index:5;padding:calc(16px + env(safe-area-inset-top,0px)) 14px 16px;background:rgba(8,16,34,.9);-webkit-backdrop-filter:blur(var(--bl,18px));backdrop-filter:blur(var(--bl,18px));border-right:1px solid rgba(255,255,255,.22);transform:translateX(-105%);visibility:hidden;transition:transform .25s,visibility .25s;display:flex;flex-direction:column;gap:6px}.drawer.open{transform:none;visibility:visible}.drawer button{text-align:left;width:100%;margin:0}#scrim{position:fixed;inset:0;z-index:4;background:rgba(0,0,0,.55)}.set label{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:8px 0}.set select,.set input[type=range]{width:55%}h3{margin:14px 0 4px}.plain{list-style:none;padding:0}.plain li{margin:6px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:10px 0}.card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:10px;text-align:center}.card b{font-size:22px;display:block}.finding{border-radius:12px;padding:10px;margin:8px 0;text-align:left}.f-critical{border-left:4px solid #ff6b6b;background:rgba(255,107,107,.1)}.f-warning{border-left:4px solid #ffb84d;background:rgba(255,184,77,.1)}.f-info{border-left:4px solid #8fd0ff;background:rgba(143,208,255,.08)}.sev{font-size:11px;font-weight:700;padding:2px 6px;border-radius:6px;margin-right:6px;background:rgba(255,255,255,.18)}.tip{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,.06);border-radius:14px;padding:12px;margin:10px 0}.ic{font-size:24px}.drawer button small{display:block;color:#a9c8ec;font-size:12px;font-weight:400}#msg{min-height:20px}.err{color:var(--r)}.hide{display:none}
+</style></head><body><canvas id="m"></canvas><main>
+<header id="top"><button id="mb" class="ib" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">&#9776;</button>
+<h1>&gt; MATRIX PASSWORD VAULT_</h1>
+</header>
+<aside id="drawer" class="drawer" aria-label="Main menu"><h2>Menu</h2>
+<button data-v="check"><b>Checker</b><small>Test a password</small></button>
+<button data-v="gen"><b>Generator</b><small>Passwords and passphrases</small></button>
+<button data-v="vault"><b>Passwords</b><small>Your encrypted vault</small></button>
+<button data-v="audit"><b>Security audit</b><small>Score and findings</small></button>
+<button data-v="ph"><b>Link check</b><small>Spot phishing tricks</small></button>
+<button data-v="learn"><b>Learn</b><small>Practice and quiz</small></button>
+<button data-v="act"><b>Activity</b><small>Vault timeline</small></button>
+<button data-v="priv"><b>Privacy</b><small>Data and your options</small></button>
+<button data-v="center"><b>Security Center</b><small>Best practices</small></button>
+<button data-v="set"><b>Settings</b><small>Look and behavior</small></button>
+<span id="who" class="mut">No profile selected</span></aside><div id="scrim" class="hide"></div>
+<div id="msg" role="status" aria-live="polite"></div><div id="net" class="mut"></div>
+
+<section id="v-check" class="c"><h2>Password Strength Checker</h2>
+<p class="mut">Checked in your browser only. Nothing is stored or sent.</p>
+<input type="password" id="chk" placeholder="Type a password to test" autocomplete="off">
+<div class="bar"><i id="bar"></i></div><div id="rep" class="mut">Waiting for input...</div>
+<div id="crack" class="mut"></div>
+<label><input type="checkbox" id="hl"> Show highlighted breakdown (shows your password on screen)</label>
+<div id="hlv" class="hide"><div class="gen" id="hlt"></div><div id="hle" class="mut"></div></div>
+<button id="brk" class="hide">Check if this password was leaked</button><div id="brr" class="mut"></div>
+<small class="mut">Optional online check. Only the first 5 characters of a SHA-1 hash are sent (k-anonymity); your password never leaves your device.</small>
+<div id="sug" class="hide ask">Not strong enough? <button id="sugb">Suggest a strong password &rarr;</button></div></section>
+
+<section id="v-gen" class="c hide"><h2>Strong Password Generator</h2>
+<div class="row"><button id="mPw" class="on">Random password</button><button id="mPp">Passphrase</button></div>
+<div id="pwopts"><div class="row"><label>Length <b id="lv">16</b></label><input type="range" id="len" min="8" max="64" value="16"></div>
+<label><input type="checkbox" id="up" checked> A-Z</label><label><input type="checkbox" id="lo" checked> a-z</label>
+<label><input type="checkbox" id="di" checked> 0-9</label><label><input type="checkbox" id="sy" checked> !@#</label>
+<label><input type="checkbox" id="am" checked> skip look-alikes (Il1O0)</label></div>
+<div id="ppopts" class="hide"><div class="row"><label>Words <b id="wv">7</b></label><input type="range" id="wc" min="4" max="10" value="7"></div>
+<label>Separator <select id="sep" style="width:auto"><option value="-">-</option><option value=" ">space</option><option value=".">.</option><option value="_">_</option><option value="">none</option></select></label>
+<label><input type="checkbox" id="cap" checked> Capitalize</label><label><input type="checkbox" id="num" checked> Add number</label><label><input type="checkbox" id="psy" checked> Add symbol</label></div>
+<div class="gen" id="out"><span class="mut">Press Generate</span></div><div id="gr" class="mut"></div>
+<button id="gen">Generate</button><button id="cp">Copy</button>
+<div id="ask" class="ask hide"><b>Save this password?</b><br><button id="yes">Yes, save it</button><button id="no">No</button></div>
+<div id="sf" class="ask hide"><b>Add details, then save</b>
+<input type="text" id="site" placeholder="Site / app (e.g. Instagram)"><input type="text" id="usr" placeholder="Username or email used there">
+<input type="text" id="spw" readonly><select id="cat"><option>General</option><option>Social</option><option>Banking</option><option>Work</option><option>Shopping</option></select><textarea id="nt" rows="2" placeholder="Notes (optional)"></textarea>
+<button id="save">Save to vault</button><button id="cx">Cancel</button></div></section>
+
+<section id="v-vault" class="c hide"><h2>My Passwords</h2>
+<div id="lock"><div id="note" class="ask hide">Choose a local profile and unlock the vault to save your password.</div>
+<div id="signin"><h3>Open a local vault</h3><p class="mut">Choose a profile name on this device.</p>
+<div class="ask" style="text-align:left"><b>Use a local vault (recommended)</b><br><span class="mut">No account or third party involved. Your passwords are protected only by the master password you choose.</span>
+<input type="text" id="lp-name" placeholder="Profile name (for example: personal)" maxlength="40" autocomplete="off"><button id="lp-go">Continue with local vault</button></div>
+<button id="offb" class="hide">Unlock last local profile (offline)</button>
+<p class="mut">This release uses a local profile only. It does not load third-party sign-in code. Your master password protects the encrypted vault on this device.</p></div>
+<div id="mk" class="hide"><h3 id="mkt">Unlock</h3><p id="mkp" class="mut"></p>
+<input type="password" id="mpw" placeholder="Master password" autocomplete="current-password">
+<input type="password" id="mpw2" class="hide" placeholder="Confirm master password" autocomplete="new-password">
+<div class="bar" id="mbarw"><i id="mbar"></i></div><div id="mhint" class="mut"></div>
+<button id="mgo">Unlock</button><button id="mout">Not you? Sign out</button></div></div>
+<div id="open" class="hide"><div id="hello" class="mut"></div><div id="dash"></div>
+<input type="text" id="q" placeholder="Search by site, username or category...">
+<button id="out2">Sign out</button><button id="exp">Export backup</button><button id="imp">Import backup</button><button id="brall">Check for breaches</button><button id="rptb">Security report</button><input type="file" id="fi" accept=".json" class="hide"><div id="flt" class="hide ask"></div><div id="rpt" class="hide"><pre id="rptx"></pre><button id="rptd">Download .md</button><button id="rptc">Close</button></div><div id="list"></div></div></section>
+<section id="v-learn" class="c hide"><h2>Learning mode</h2>
+<p class="mut">All examples are fictional. Do not type your real passwords into any learning tool.</p>
+<h3>1. Take apart a sample</h3><div id="ln-samples"></div><div id="ln-out" class="mut"></div>
+<h3>2. Which is stronger?</h3><div id="qz"></div>
+<h3>3. Length vs complexity</h3>
+<label>Random characters <b id="lcv">8</b><input type="range" id="lc" min="4" max="20" value="8"></label>
+<label>Random words <b id="lwv">4</b><input type="range" id="lw" min="2" max="10" value="4"></label>
+<div id="calc" class="mut" role="status"></div>
+<h3>4. Common attacks</h3><ul id="atk"></ul></section>
+<section id="v-audit" class="c hide"><h2>Security audit</h2>
+<p class="mut">Full scan of your passwords, settings, vault hygiene and this deployment. Last audit: <span id="au-last">never</span></p>
+<div class="row"><button id="au-run">Run full audit</button><button data-go="gen">Password generator</button><button id="au-exp">Export report</button></div>
+<div id="au-cards" class="grid"></div>
+<div id="au-score" class="row" role="status"></div>
+<h3>Audit findings</h3><div id="au-list"><span class="mut">Unlock your vault and run the audit.</span></div>
+<h3>Charts</h3><div id="au-charts" class="grid"></div>
+<h3>Manual checks (you confirm)</h3><ul id="sc-man" class="plain"></ul><div id="sc-sum" class="mut" role="status"></div></section>
+<section id="v-center" class="c hide"><h2>Security Center</h2><p class="mut">Your security status and best practices</p>
+<h3>Status overview</h3><div id="ce-status" class="grid"></div><div id="ce-next"></div>
+<h3>Best practices</h3>
+<div class="tip"><span class="ic">&#128273;</span><div><b>Master password strength</b><br>Use a long passphrase: 16+ characters or 6+ random words. Never reuse it anywhere else.<br><button data-go="gen">Open generator</button></div></div>
+<div class="tip"><span class="ic">&#128190;</span><div><b>There is no recovery</b><br>Your master password cannot be reset. Keep an encrypted backup offline and test it with "Verify a backup file".<br><button data-go="priv">Verify a backup</button></div></div>
+<div class="tip"><span class="ic">&#128187;</span><div><b>Device security</b><br>Use a screen lock, keep your system and browser updated, lock the vault when you step away, and avoid shared or public devices.<br><button data-go="set">Auto-lock settings</button></div></div>
+<div class="tip"><span class="ic">&#128260;</span><div><b>Password hygiene</b><br>Use a unique password for every account, turn on multi-factor login, and change important passwords regularly.<br><button data-go="audit">Run the audit</button></div></div>
+<div class="tip"><span class="ic">&#127907;</span><div><b>Phishing</b><br>Check unfamiliar links before you log in. Never enter your vault master password on any website other than this app.<br><button data-go="ph">Check a link</button></div></div>
+<div class="ask"><b>Remember:</b> your master password is the only way to open your vault. Keep it safe and never share it.</div></section>
+<section id="v-ph" class="c hide"><h2>Link check</h2>
+<p class="mut">Paste a web address before you log in. The check runs on this device and sends nothing. It spots common tricks, but it can never prove a site is safe.</p>
+<input type="text" id="ph-in" placeholder="Paste a link or website name"><div id="ph-out"></div></section>
+<section id="v-act" class="c hide"><h2>Security activity</h2>
+<p class="mut">A timeline of what happened in your vault. It is stored inside the encrypted vault on this device and lists site names, never passwords.</p>
+<div id="act-list"></div><button id="act-dl">Download .txt</button><button id="act-clr">Clear timeline</button></section>
+<section id="v-priv" class="c hide"><h2>Privacy and data</h2>
+<p class="mut">Everything this app stores lives in this browser. The only optional external request is the breach check, which sends a 5-character SHA-1 hash prefix, not your password.</p>
+<h3>Stored on this device</h3><ul id="pv-list" class="plain"></ul>
+<h3>What contacts the internet</h3><ul class="plain">
+
+<li>Breach check (only when you click): sends the first 5 characters of a SHA-1 hash of a password, plus padding, to api.pwnedpasswords.com. The password and full hash never leave your device.</li>
+<li>Checker, generator, link check, audit, learning mode and the vault run entirely on this device.</li>
+<li>The offline service worker caches this app's own files. There is no analytics, advertising or tracking.</li></ul>
+<h3>Your options</h3>
+<button id="pv-exp">Export encrypted backup</button><button id="pv-ver">Verify a backup file</button><input type="file" id="vf" accept=".json" class="hide"><button id="pv-prefs">Clear app preferences</button><button id="pv-del">Delete my vault</button><button id="pv-all">Erase all data on this device</button>
+<p class="mut">Deleting is permanent. Without a backup file and its backup password, deleted passwords cannot be recovered.</p></section>
+<section id="v-set" class="c set hide"><h2>Settings</h2>
+<h3>Appearance</h3>
+<label>Interface color <select id="s-theme"><option value="blue">Blue</option><option value="purple">Purple</option><option value="green">Green</option><option value="orange">Orange</option><option value="pink">Pink</option></select></label>
+<label>Matrix rain color <select id="s-rain"><option value="green">Green</option><option value="blue">Blue</option><option value="theme">Match interface</option><option value="white">White</option></select></label>
+<label>Rain brightness <input type="range" id="s-op" min="15" max="90"></label>
+<label>Glass blur <input type="range" id="s-bl" min="0" max="30"></label>
+<label>Text size <select id="s-fs"><option value="13">Small</option><option value="15">Medium</option><option value="18">Large</option></select></label>
+<label>Rain animation <button id="anim" aria-pressed="true">Animation: on</button></label>
+<h3>Security</h3>
+<label>Auto-lock after <select id="s-idle"><option value="1">1 minute</option><option value="5">5 minutes</option><option value="15">15 minutes</option><option value="30">30 minutes</option></select></label>
+<label>Clear copied passwords after <select id="s-clip"><option value="10">10 seconds</option><option value="30">30 seconds</option><option value="60">60 seconds</option><option value="0">Never</option></select></label>
+<label>Review reminder after <select id="s-rev"><option value="30">30 days</option><option value="90">90 days</option><option value="180">180 days</option><option value="0">Never</option></select></label>
+<h3>Key derivation</h3>
+<label>Argon2id memory (new vaults and backups) <select id="s-mem"><option value="19456">19 MiB</option><option value="65536">64 MiB</option><option value="131072">128 MiB</option></select></label>
+<button id="kd-test">Test speed on this device</button><div id="kd-out" class="mut" role="status"></div>
+<p class="mut">Existing vaults move from PBKDF2 to Argon2id automatically the next time you unlock. Backups made earlier still restore. About 0.2 to 1.5 seconds is a good unlock time.</p>
+<h3>Generator</h3>
+<label>Default password length <span><b id="s-lv">16</b> <input type="range" id="s-len" min="8" max="64" style="width:140px"></span></label>
+<button id="s-reset">Reset to defaults</button>
+<p class="mut">Settings are saved in this browser only and never include passwords.</p></section></main>
+<script src="vendor/sodium.js"></script><script src="app.js"></script></body></html>

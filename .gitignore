@@ -1,0 +1,19 @@
+# Python-generated files
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node.js dependencies (install with npm when needed)
+node_modules/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Logs and OS-generated files
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
